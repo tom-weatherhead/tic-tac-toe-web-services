@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SOAPTicTacToeService WSDL service -->
+
+  <service name="SOAPTicTacToe" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://soaptictactoe.webservices.thaw.org"/>
+      <parameter name="wsdlServiceElement" value="SOAPTicTacToeService"/>
+      <parameter name="schemaQualified" value="http://soaptictactoe.webservices.thaw.org"/>
+      <parameter name="wsdlServicePort" value="SOAPTicTacToe"/>
+      <parameter name="className" value="org.thaw.webservices.soaptictactoe.SOAPTicTacToe"/>
+      <parameter name="wsdlPortType" value="SOAPTicTacToe"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://soaptictactoe.webservices.thaw.org" xmlns:retNS="http://soaptictactoe.webservices.thaw.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="findBestMove" qname="operNS:findBestMove" returnQName="retNS:findBestMoveReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://soaptictactoe.webservices.thaw.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:boardDimension" type="tns:int"/>
+        <parameter xmlns:pns="http://soaptictactoe.webservices.thaw.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:boardAsString" type="tns:string"/>
+        <parameter xmlns:pns="http://soaptictactoe.webservices.thaw.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:playerAsString" type="tns:string"/>
+        <parameter xmlns:pns="http://soaptictactoe.webservices.thaw.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:playerPly" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="findBestMove"/>
+
+  </service>
+</deployment>

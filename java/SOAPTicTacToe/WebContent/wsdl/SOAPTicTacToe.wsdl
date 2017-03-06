@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://soaptictactoe.webservices.thaw.org" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://soaptictactoe.webservices.thaw.org" xmlns:intf="http://soaptictactoe.webservices.thaw.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://soaptictactoe.webservices.thaw.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="findBestMove">
+    <complexType>
+     <sequence>
+      <element name="boardDimension" type="xsd:int"/>
+      <element name="boardAsString" type="xsd:string"/>
+      <element name="playerAsString" type="xsd:string"/>
+      <element name="playerPly" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="findBestMoveResponse">
+    <complexType>
+     <sequence>
+      <element name="findBestMoveReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="findBestMoveRequest">
+
+      <wsdl:part element="impl:findBestMove" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="findBestMoveResponse">
+
+      <wsdl:part element="impl:findBestMoveResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SOAPTicTacToe">
+
+      <wsdl:operation name="findBestMove">
+
+         <wsdl:input message="impl:findBestMoveRequest" name="findBestMoveRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:findBestMoveResponse" name="findBestMoveResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SOAPTicTacToeSoapBinding" type="impl:SOAPTicTacToe">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="findBestMove">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="findBestMoveRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="findBestMoveResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SOAPTicTacToeService">
+
+      <wsdl:port binding="impl:SOAPTicTacToeSoapBinding" name="SOAPTicTacToe">
+
+         <wsdlsoap:address location="http://localhost:8081/SOAPTicTacToe/services/SOAPTicTacToe"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

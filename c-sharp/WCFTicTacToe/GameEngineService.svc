@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WCFTicTacToe.GameEngineService" CodeBehind="GameEngineService.svc.cs" %>
